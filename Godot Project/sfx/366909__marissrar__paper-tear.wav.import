@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/366909__marissrar__paper-tear.wav-7ebbf18897805d96a0df80215d7df39d.sample"
+
+[deps]
+
+source_file="res://sfx/366909__marissrar__paper-tear.wav"
+dest_files=[ "res://.import/366909__marissrar__paper-tear.wav-7ebbf18897805d96a0df80215d7df39d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

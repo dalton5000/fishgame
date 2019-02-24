@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bite.wav-70fd55ef181dd7278ed5f43a3e19d648.sample"
+
+[deps]
+
+source_file="res://sfx/bite.wav"
+dest_files=[ "res://.import/bite.wav-70fd55ef181dd7278ed5f43a3e19d648.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

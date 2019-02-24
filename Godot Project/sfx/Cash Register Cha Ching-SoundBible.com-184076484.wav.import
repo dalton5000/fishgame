@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Cash Register Cha Ching-SoundBible.com-184076484.wav-3d90eab2ea4b46652602dee53fa84270.sample"
+
+[deps]
+
+source_file="res://sfx/Cash Register Cha Ching-SoundBible.com-184076484.wav"
+dest_files=[ "res://.import/Cash Register Cha Ching-SoundBible.com-184076484.wav-3d90eab2ea4b46652602dee53fa84270.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
