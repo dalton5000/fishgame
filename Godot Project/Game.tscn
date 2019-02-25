@@ -34,10 +34,10 @@ extents = Vector2( 384, 120 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-[sub_resource type="StyleBoxFlat" id=7]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.556863, 0.823529, 0.470588, 0.560784 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=5]
 content_margin_left = 8.0
 content_margin_right = 8.0
 content_margin_top = 4.0
@@ -49,20 +49,20 @@ margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
 
-[sub_resource type="StreamTexture" id=9]
+[sub_resource type="StreamTexture" id=6]
 load_path = "res://.import/retire_normal.png-808e963da9b514ef28d3acaa44a758cd.stex"
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=7]
 content_margin_left = 8.0
 content_margin_right = 8.0
-texture = SubResource( 9 )
+texture = SubResource( 6 )
 region_rect = Rect2( 0, 0, 32, 32 )
 margin_left = 4.0
 margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=8]
 content_margin_left = 8.0
 content_margin_right = 8.0
 texture = ExtResource( 19 )
@@ -72,12 +72,12 @@ margin_right = 4.0
 margin_top = 4.0
 margin_bottom = 4.0
 
-[sub_resource type="StyleBoxEmpty" id=12]
+[sub_resource type="StyleBoxEmpty" id=9]
 
-[sub_resource type="StyleBoxFlat" id=13]
+[sub_resource type="StyleBoxFlat" id=10]
 bg_color = Color( 1, 0.972549, 0.537255, 0.792157 )
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=11]
 resource_name = "win"
 length = 3.0
 tracks/0/type = "value"
@@ -121,7 +121,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=12]
 extents = Vector2( 2125, 600 )
 
 [node name="Game" type="Node"]
@@ -435,7 +435,7 @@ margin_top = -126.5
 margin_right = 109.0
 margin_bottom = 126.5
 theme = ExtResource( 12 )
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 4 )
 script = ExtResource( 17 )
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD-Layer/Pause"]
@@ -468,28 +468,28 @@ align = 1
 margin_top = 51.0
 margin_right = 158.0
 margin_bottom = 81.0
-custom_styles/normal = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 text = "Sound on/off"
 
 [node name="Music" type="Button" parent="HUD-Layer/Pause/MarginContainer/CenterContainer/VBoxContainer"]
 margin_top = 85.0
 margin_right = 158.0
 margin_bottom = 115.0
-custom_styles/normal = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 text = "Music on/off"
 
 [node name="Restart" type="Button" parent="HUD-Layer/Pause/MarginContainer/CenterContainer/VBoxContainer"]
 margin_top = 119.0
 margin_right = 158.0
 margin_bottom = 149.0
-custom_styles/normal = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 text = "Restart"
 
 [node name="Continue" type="Button" parent="HUD-Layer/Pause/MarginContainer/CenterContainer/VBoxContainer"]
 margin_top = 153.0
 margin_right = 158.0
 margin_bottom = 183.0
-custom_styles/normal = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 text = "Continue"
 
 [node name="RETIRE" type="Button" parent="HUD-Layer"]
@@ -501,11 +501,11 @@ margin_right = 498.0
 margin_bottom = 96.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
-custom_styles/hover = SubResource( 10 )
-custom_styles/pressed = SubResource( 11 )
-custom_styles/focus = SubResource( 12 )
-custom_styles/disabled = SubResource( 10 )
-custom_styles/normal = SubResource( 10 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/pressed = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 7 )
 custom_fonts/font = ExtResource( 20 )
 text = "RETIRE (2000 §$)"
 
@@ -513,12 +513,12 @@ text = "RETIRE (2000 §$)"
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -128.0
-margin_top = 110.0
+margin_top = -140.0
 margin_right = 128.0
-margin_bottom = 238.0
+margin_bottom = -12.0
 rect_min_size = Vector2( 256, 128 )
 theme = ExtResource( 12 )
-custom_styles/panel = SubResource( 13 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="CenterContainer" type="CenterContainer" parent="HUD-Layer/WinPanel"]
 margin_right = 256.0
@@ -542,7 +542,7 @@ stream = ExtResource( 21 )
 stream = ExtResource( 22 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HUD-Layer/WinPanel"]
-anims/win = SubResource( 14 )
+anims/win = SubResource( 11 )
 
 [node name="Water" type="Area2D" parent="."]
 visible = false
@@ -559,7 +559,7 @@ __meta__ = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water"]
 position = Vector2( 512, 735.66 )
-shape = SubResource( 8 )
+shape = SubResource( 12 )
 
 [node name="JukeBox" type="Node" parent="."]
 script = ExtResource( 24 )
@@ -590,3 +590,4 @@ bus = "music"
 [connection signal="body_entered" from="Water" to="Water" method="_on_Water_body_entered"]
 [connection signal="body_exited" from="Water" to="Water" method="_on_Water_body_exited"]
 [connection signal="finished" from="JukeBox/Song1" to="JukeBox" method="_on_Song1_finished"]
+[connection signal="finished" from="JukeBox/Song2" to="JukeBox" method="_on_Song2_finished"]
