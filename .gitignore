@@ -9,3 +9,4 @@ Exports/
 # System/tool-specific ignores
 .directory
 *~
+\.old/
