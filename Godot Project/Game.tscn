@@ -1,4 +1,77 @@
-[gd_scene format=2]
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Game.gd" type="Script" id=1]
+[ext_resource path="res://graphics/background/sky1.png" type="Texture" id=2]
+[ext_resource path="res://graphics/background/tower.png" type="Texture" id=3]
+[ext_resource path="res://player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://WaterArea.gd" type="Script" id=5]
+[ext_resource path="res://graphics/water.png" type="Texture" id=6]
+[ext_resource path="res://utility_nodes/HighscoreLayer.tscn" type="PackedScene" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1024, 512 )
 
 [node name="Game" type="Node"]
+script = ExtResource( 1 )
 
+[node name="Background" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+motion_mirroring = Vector2( 640, 0 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+margin_left = 1.0
+margin_top = 360.0
+margin_right = 1288.0
+margin_bottom = 716.0
+color = Color( 0.227451, 0.6, 0.956863, 1 )
+
+[node name="Level" type="Node2D" parent="."]
+
+[node name="Player" parent="Level" instance=ExtResource( 4 )]
+position = Vector2( 275, 183 )
+
+[node name="Camera2D" type="Camera2D" parent="Level/Player"]
+position = Vector2( 45, -4 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
+
+[node name="WaterArea" type="Area2D" parent="Level"]
+space_override = 1
+gravity = 180.0
+linear_damp = 15.0
+angular_damp = 10.0
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="Level/WaterArea"]
+modulate = Color( 1, 1, 1, 0.635294 )
+position = Vector2( 401, 569 )
+scale = Vector2( 5, 3 )
+z_index = 5
+texture = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/WaterArea"]
+position = Vector2( 0, 697 )
+shape = SubResource( 1 )
+
+[node name="HUDLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="HUDLayer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HighscoreLayer" parent="." instance=ExtResource( 7 )]
+
+[connection signal="body_entered" from="Level/WaterArea" to="Level/WaterArea" method="_on_WaterArea_body_entered"]

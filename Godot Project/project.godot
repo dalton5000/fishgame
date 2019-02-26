@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Fishgame"
+config/name="Super Silver Salmon Bay"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
@@ -27,7 +27,9 @@ gdscript/warnings/unused_argument=false
 
 [display]
 
-window/size/height=768
+window/size/width=1280
+window/size/height=720
+window/size/resizable=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -102,10 +104,21 @@ throw_lure={
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_clear_color=Color( 0.52549, 0.854902, 1, 1 )
