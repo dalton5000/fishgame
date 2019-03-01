@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://utility_nodes/JukeBox.gd" type="Script" id=1]
+[ext_resource path="res://sfx/LazyDay.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sfx/Fishing_Music_v2.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sfx/12Mornings.ogg" type="AudioStream" id=4]
+
+[node name="JukeBox" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Song1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "music"
+
+[node name="SongJohn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "music"
+
+[node name="Song2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "music"
+

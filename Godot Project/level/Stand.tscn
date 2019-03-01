@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://level/Stand.gd" type="Script" id=1]
+[ext_resource path="res://graphics/stand.png" type="Texture" id=2]
+[ext_resource path="res://utility_nodes/SpriteFloater.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sfx/Cash Register Cha Ching-SoundBible.com-184076484.wav" type="AudioStream" id=4]
+
+[node name="Stand" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="SpriteFloater" parent="." instance=ExtResource( 3 )]
+floating_speed = 1.0
+floating_height = 4.0
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+collision_layer = 18
+collision_mask = 18
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KinematicBody2D"]
+visible = false
+polygon = PoolVector2Array( -53, -1, -54, -1, -54, -6, -53, -7, -38, -7, 96, -7, 96, 42, 84, 43, 30, 42, -27, 36, -40, 20, -44, 11, -46, 6, -46, 1, -53, 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -27, -18 )
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( 0, 1 )
+polygon = PoolVector2Array( -11, 10, -10, 1, -2, 1, -2, -6, 5, -6, 5, 1, 10, 1, 11, 10 )
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Kaching" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 4 )
+attenuation = 0.615572
+
+[node name="PopLabelPosition" type="Position2D" parent="."]
+position = Vector2( -26, -26 )
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

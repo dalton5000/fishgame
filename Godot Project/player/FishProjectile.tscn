@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://player/FishProjectile.gd" type="Script" id=1]
+[ext_resource path="res://graphics/fishes.png" type="Texture" id=2]
+[ext_resource path="res://sfx/splash.wav" type="AudioStream" id=3]
+[ext_resource path="res://utility_nodes/FadeOutTween.gd" type="Script" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.0
+height = 4.0
+
+[node name="FishProjectile" type="RigidBody2D" groups=[
+"fish_projectile",
+]]
+collision_layer = 16
+collision_mask = 16
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 10
+hframes = 5
+
+[node name="Splash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+bus = "sound"
+
+[node name="FadeOutTween" type="Tween" parent="."]
+script = ExtResource( 4 )
+

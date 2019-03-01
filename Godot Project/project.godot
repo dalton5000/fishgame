@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Tween",
+"class": "FadeOutTween",
+"language": "GDScript",
+"path": "res://utility_nodes/FadeOutTween.gd"
+}, {
+"base": "Area2D",
+"class": "Fish",
+"language": "GDScript",
+"path": "res://Fish/Fish.gd"
+} ]
 _global_script_class_icons={
-
+"FadeOutTween": "",
+"Fish": ""
 }
 
 [application]
@@ -19,11 +30,13 @@ config/name="Super Silver Salmon Bay"
 run/main_scene="res://Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+fish_data="*res://data/fish_data.gd"
+
 [debug]
 
-gdscript/warnings/unused_variable=false
-gdscript/warnings/unused_class_variable=false
-gdscript/warnings/unused_argument=false
+gdscript/warnings/enable=false
 
 [display]
 
@@ -114,6 +127,14 @@ move_right={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="fish"
+2d_physics/layer_3="pickup"
+2d_physics/layer_4="level"
+2d_physics/layer_5="projectile"
 
 [rendering]
 

@@ -16,3 +16,5 @@ func _ready():
 func _on_WaterArea_body_entered(body):
 	if body.is_in_group("lure"):
 		body.entered_water()
+	if body.is_in_group("fish_projectile"):
+		body.entered_water()

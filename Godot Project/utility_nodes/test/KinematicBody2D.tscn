@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://hud/button/retire.pressed.png" type="Texture" id=1]
+[ext_resource path="res://hud/button/pressed.png" type="Texture" id=2]
+
+[node name="TouchScreenButton" type="TouchScreenButton"]
+position = Vector2( 393, 191 )
+scale = Vector2( 10.25, 9.28125 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+

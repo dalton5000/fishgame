@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Fishing_Music_v2.ogg-558233077835bfe99c6fe9bd3ffc2699.oggstr"
+
+[deps]
+
+source_file="res://sfx/Fishing_Music_v2.ogg"
+dest_files=[ "res://.import/Fishing_Music_v2.ogg-558233077835bfe99c6fe9bd3ffc2699.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

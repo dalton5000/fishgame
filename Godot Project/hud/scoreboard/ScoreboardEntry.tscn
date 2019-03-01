@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://hud/theme.tres" type="Theme" id=1]
+[ext_resource path="res://hud/woodpanel_carve.png" type="Texture" id=2]
+[ext_resource path="res://hud/scoreboard/ScoreboardEntry.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 16, 6 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 3.0
+margin_bottom = 3.0
+
+[node name="PanelContainer" type="PanelContainer"]
+margin_right = 14.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 5.0
+margin_top = 3.0
+margin_right = 245.0
+margin_bottom = 13.0
+custom_constants/separation = 16
+
+[node name="Rank" type="Label" parent="HBoxContainer"]
+margin_right = 11.0
+margin_bottom = 10.0
+text = "0."
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+margin_left = 27.0
+margin_right = 177.0
+margin_bottom = 10.0
+rect_min_size = Vector2( 150, 0 )
+text = "Hans vom Myll"
+autowrap = true
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+margin_left = 193.0
+margin_right = 240.0
+margin_bottom = 10.0
+size_flags_horizontal = 3
+text = "000010"
+align = 2
+
