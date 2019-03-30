@@ -6,11 +6,14 @@ var pop_scene = preload("res://hud/PopLabel.tscn")
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("fish_projectile"):
 		body.get_collected()
-		emit_signal("fish_collected",body.type)
-		$Sounds/Kaching.play()
 		var value = fish_data.species[body.type].value 
-		var text = "+" + str(value) + "$"
-		pop(text,Color.white)
+		money_collected(value)
+		emit_signal("fish_collected",body.type)
+
+func money_collected(amount):
+	$Sounds/Kaching.play()
+	var text = "+ " + helper.make_stringy_number(amount)
+	pop(text,Color.white)
 
 func pop(text, color):
 	var pop_label = pop_scene.instance()

@@ -1,0 +1,1 @@
+(New-Object Net.WebClient).DownloadFile('https://docs.google.com/spreadsheets/d/1vrfB1U9obQNXx0TMpLnnbhra3PmY2EvwTpzbnQHsuYc/export?format=tsv&id1vrfB1U9obQNXx0TMpLnnbhra3PmY2EvwTpzbnQHsuYc', 'area_data.tsv')

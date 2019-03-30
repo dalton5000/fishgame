@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dan Lebowitz - The Clean Up Man.ogg-c74916ca33c086e48b1da549074fcbfe.oggstr"
+
+[deps]
+
+source_file="res://music/Dan Lebowitz - The Clean Up Man.ogg"
+dest_files=[ "res://.import/Dan Lebowitz - The Clean Up Man.ogg-c74916ca33c086e48b1da549074fcbfe.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

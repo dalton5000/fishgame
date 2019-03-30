@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/horizon.png-bdf5bb05852e50d367e0781e3dccfeca.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Akaash Ghandi - Shattered Paths.ogg-d7655a809b1f1ef64317f3220071da5e.oggstr"
+
+[deps]
+
+source_file="res://music/Akaash Ghandi - Shattered Paths.ogg"
+dest_files=[ "res://.import/Akaash Ghandi - Shattered Paths.ogg-d7655a809b1f1ef64317f3220071da5e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

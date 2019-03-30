@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://level/SpawnArea/SpawnArea.gd" type="Script" id=1]
+[ext_resource path="res://hud/SempliceRegular.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="SpawnArea" type="Node2D"]
+script = ExtResource( 1 )
+id = -2
+
+[node name="Info" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="IDLabel" type="Label" parent="Info"]
+margin_right = 62.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 0.5, 1 )
+text = "Spawn Area: -2"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_left = -80.0
+margin_top = -30.0
+margin_right = 80.0
+margin_bottom = 30.0
+color = Color( 1, 0.00784314, 0.564706, 0.294118 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0, 9.53674e-007 )
+scale = Vector2( 8, 3 )
+
+[node name="RefillTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="viewport_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_entered"]
+[connection signal="viewport_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_exited"]
+[connection signal="timeout" from="RefillTimer" to="." method="_on_RefillTimer_timeout"]

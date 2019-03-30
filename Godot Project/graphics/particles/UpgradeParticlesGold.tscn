@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.618785, 1 )
+colors = PoolColorArray( 1, 0.984375, 0, 0.994653, 0.992193, 1, 0, 0.933702, 1, 1, 1, 0 )
+
+[node name="ParticlesGold" type="CPUParticles2D"]
+position = Vector2( 16, -4 )
+amount = 23
+explosiveness = 0.83
+emission_shape = 2
+emission_rect_extents = Vector2( 2, 5 )
+spread = 180.0
+initial_velocity = 38.72
+damping = 33.33
+scale_amount = 1.5
+color_ramp = SubResource( 1 )
+

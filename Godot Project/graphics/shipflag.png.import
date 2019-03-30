@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/shipflag.png-ee93c991330e6ab63af8ddc574985885.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

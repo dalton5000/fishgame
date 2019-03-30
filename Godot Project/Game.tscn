@@ -1,24 +1,34 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://utility_nodes/Background.gd" type="Script" id=2]
-[ext_resource path="res://graphics/background/sky1.png" type="Texture" id=3]
-[ext_resource path="res://graphics/background/horizon.png" type="Texture" id=4]
-[ext_resource path="res://graphics/background/tower.png" type="Texture" id=5]
-[ext_resource path="res://graphics/background/sky2.png" type="Texture" id=6]
+[ext_resource path="res://graphics/background/water.png" type="Texture" id=3]
+[ext_resource path="res://graphics/background/sky1.png" type="Texture" id=4]
+[ext_resource path="res://graphics/background/horizon.png" type="Texture" id=5]
+[ext_resource path="res://graphics/background/tower.png" type="Texture" id=6]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=7]
 [ext_resource path="res://WaterArea.gd" type="Script" id=8]
-[ext_resource path="res://graphics/water.png" type="Texture" id=9]
-[ext_resource path="res://utility_nodes/Borders.gd" type="Script" id=10]
-[ext_resource path="res://level/Stand.tscn" type="PackedScene" id=11]
-[ext_resource path="res://level/SpawnArea.tscn" type="PackedScene" id=12]
-[ext_resource path="res://hud/HUDLayer.gd" type="Script" id=13]
-[ext_resource path="res://hud/theme.tres" type="Theme" id=14]
-[ext_resource path="res://utility_nodes/HighscoreLayer.tscn" type="PackedScene" id=15]
-[ext_resource path="res://utility_nodes/JukeBox.tscn" type="PackedScene" id=16]
-[ext_resource path="res://sfx/sea2.ogg" type="AudioStream" id=17]
-[ext_resource path="res://hud/button/normal.png" type="Texture" id=18]
-[ext_resource path="res://hud/button/pressed.png" type="Texture" id=19]
+[ext_resource path="res://graphics/background/water2.png" type="Texture" id=9]
+[ext_resource path="res://graphics/water.png" type="Texture" id=10]
+[ext_resource path="res://utility_nodes/Borders.gd" type="Script" id=11]
+[ext_resource path="res://level/Boje.tscn" type="PackedScene" id=12]
+[ext_resource path="res://level/Stand.tscn" type="PackedScene" id=13]
+[ext_resource path="res://level/combobar/ComboBar.tscn" type="PackedScene" id=14]
+[ext_resource path="res://enemies/piranha/Piranha.tscn" type="PackedScene" id=15]
+[ext_resource path="res://level/SpawnArea/SpawnArea.tscn" type="PackedScene" id=16]
+[ext_resource path="res://enemies/bird/Bird.tscn" type="PackedScene" id=17]
+[ext_resource path="res://level/RecordSpawner.tscn" type="PackedScene" id=18]
+[ext_resource path="res://hud/HUDLayer.gd" type="Script" id=19]
+[ext_resource path="res://hud/theme.tres" type="Theme" id=20]
+[ext_resource path="res://hud/flat_panel_bright.tres" type="StyleBox" id=21]
+[ext_resource path="res://hud/ScoreLabel.tscn" type="PackedScene" id=22]
+[ext_resource path="res://hud/LogPanel.gd" type="Script" id=23]
+[ext_resource path="res://hud/jukebox/JukeboxPanel.tscn" type="PackedScene" id=24]
+[ext_resource path="res://hud/UpgradeMenu.tscn" type="PackedScene" id=25]
+[ext_resource path="res://hud/SettingsMenu.tscn" type="PackedScene" id=26]
+[ext_resource path="res://sfx/sea2.ogg" type="AudioStream" id=27]
+[ext_resource path="res://sfx/UI Set Kenney/click3.wav" type="AudioStream" id=28]
+[ext_resource path="res://utility_nodes/FreeFloatCam.gd" type="Script" id=29]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 1024, 512 )
@@ -29,55 +39,71 @@ extents = Vector2( 2048, 10 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 10, 1024 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 512, 96 )
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
 
 [node name="Background" type="Node2D" parent="."]
+editor/display_folded = true
+position = Vector2( 0, 1 )
 script = ExtResource( 2 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
 
 [node name="Sea" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_scale = Vector2( 0.3, 1 )
 motion_mirroring = Vector2( 640, 0 )
 
 [node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/Sea"]
 texture = ExtResource( 3 )
 centered = false
 
-[node name="Horizon" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2( 0, 141 )
-motion_scale = Vector2( 0.5, 1 )
+[node name="SkyBack" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 0, -200 )
+motion_scale = Vector2( 0.01, 1 )
 motion_mirroring = Vector2( 640, 0 )
 
-[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/Horizon"]
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/SkyBack"]
+position = Vector2( 0, 200 )
 texture = ExtResource( 4 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="Tower" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_scale = Vector2( 0.4, 1 )
-
-[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/Tower"]
-texture = ExtResource( 5 )
-centered = false
-
-[node name="SkyHigh" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-position = Vector2( 0, -200 )
+[node name="Horizon" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+editor/display_folded = true
+position = Vector2( 0, 141 )
 motion_scale = Vector2( 0.1, 1 )
 motion_mirroring = Vector2( 640, 0 )
 
-[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/SkyHigh"]
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/Horizon"]
+position = Vector2( 0, -141 )
+texture = ExtResource( 5 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Tower" type="ParallaxLayer" parent="Background/ParallaxBackground"]
+editor/display_folded = true
+motion_scale = Vector2( 0.4, 1 )
+
+[node name="Sprite" type="Sprite" parent="Background/ParallaxBackground/Tower"]
 texture = ExtResource( 6 )
 centered = false
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Level" type="Node2D" parent="."]
 z_index = 10
 
 [node name="Player" parent="Level" instance=ExtResource( 7 )]
-position = Vector2( 815, 186 )
+position = Vector2( 752, 185 )
 
 [node name="WaterArea" type="Area2D" parent="Level"]
 space_override = 1
@@ -87,47 +113,107 @@ angular_damp = 10.0
 collision_layer = 17
 collision_mask = 17
 script = ExtResource( 8 )
-
-[node name="Sprite" type="Sprite" parent="Level/WaterArea"]
-modulate = Color( 0.345098, 0.768627, 1, 0.443137 )
-position = Vector2( 495, 803 )
-scale = Vector2( 9.72656, 4.8125 )
-z_index = 5
-texture = ExtResource( 9 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/WaterArea"]
+visible = false
 position = Vector2( 0, 697 )
 shape = SubResource( 1 )
 
+[node name="Sprite" type="Sprite" parent="Level/WaterArea"]
+modulate = Color( 1, 1, 1, 0.694118 )
+z_index = 5
+texture = ExtResource( 9 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 5120, 360 )
+
+[node name="Sprite2" type="Sprite" parent="Level/WaterArea"]
+modulate = Color( 1, 1, 1, 0.694118 )
+position = Vector2( -5120, 0 )
+z_index = 5
+texture = ExtResource( 9 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 5120, 360 )
+
+[node name="water" type="Sprite" parent="Level/WaterArea"]
+modulate = Color( 1, 1, 1, 0.694118 )
+position = Vector2( 313, 1080 )
+z_index = 5
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Borders" type="Node2D" parent="Level"]
 editor/display_folded = true
-script = ExtResource( 10 )
+script = ExtResource( 11 )
 
 [node name="Top" type="Area2D" parent="Level/Borders"]
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders/Top"]
-position = Vector2( 0, 190 )
+position = Vector2( -6, 206 )
 shape = SubResource( 2 )
 
 [node name="Left" type="Area2D" parent="Level/Borders"]
+position = Vector2( -285, 1214 )
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders/Left"]
-position = Vector2( 0, 1220 )
+shape = SubResource( 3 )
+
+[node name="Left3" type="Area2D" parent="Level/Borders"]
+position = Vector2( -608, 1214 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders/Left3"]
+shape = SubResource( 3 )
+
+[node name="Left2" type="Area2D" parent="Level/Borders"]
+position = Vector2( 864, 1234 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Level/Borders/Left2"]
+position = Vector2( -18, -1 )
 shape = SubResource( 3 )
 
 [node name="Right" type="Area2D" parent="Level/Borders"]
+position = Vector2( 842, 1234 )
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Borders/Right"]
-position = Vector2( 1030, 1220 )
+modulate = Color( 0.964706, 0.223529, 0.223529, 1 )
+shape = SubResource( 3 )
+
+[node name="Right3" type="Area2D" parent="Level/Borders"]
+position = Vector2( 1202, 1229 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Borders/Right3"]
+modulate = Color( 0.964706, 0.223529, 0.223529, 1 )
+shape = SubResource( 3 )
+
+[node name="Right2" type="Area2D" parent="Level/Borders"]
+position = Vector2( -288, 1219 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Level/Borders/Right2"]
+modulate = Color( 0.964706, 0.223529, 0.223529, 1 )
 shape = SubResource( 3 )
 
 [node name="Bottom" type="Area2D" parent="Level/Borders"]
+position = Vector2( 5, -413 )
 collision_layer = 8
 collision_mask = 8
 
@@ -135,113 +221,424 @@ collision_mask = 8
 position = Vector2( 0, 1220 )
 shape = SubResource( 2 )
 
-[node name="Stand" parent="Level" instance=ExtResource( 11 )]
+[node name="Boje" parent="Level/Borders" instance=ExtResource( 12 )]
+position = Vector2( -290, 183 )
+
+[node name="Boje2" parent="Level/Borders" instance=ExtResource( 12 )]
+position = Vector2( 790, 183 )
+
+[node name="Stand" parent="Level" instance=ExtResource( 13 )]
+editor/display_folded = true
 position = Vector2( 1002, 164 )
 
-[node name="Fishes" type="Node2D" parent="Level"]
+[node name="ComboBar" parent="Level/Stand" instance=ExtResource( 14 )]
+position = Vector2( -26, -77 )
+
+[node name="Piranhas" type="Node2D" parent="Level"]
+editor/display_folded = true
+z_index = 6
+
+[node name="Piranha" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 858, 227 )
+max_travelling = 2
+
+[node name="Piranha2" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 911, 267 )
+
+[node name="Piranha16" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 791, 315 )
+max_travelling = 2
+
+[node name="Piranha3" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 602, 376 )
+
+[node name="Piranha4" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 215, 331 )
+
+[node name="Piranha5" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 412, 452 )
+
+[node name="Piranha6" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 482, 529 )
+
+[node name="Piranha7" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 53, 475 )
+
+[node name="Piranha8" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -227, 436 )
+max_travelling = 2
+
+[node name="Piranha9" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -61, 646 )
+
+[node name="Piranha10" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 464, 683 )
+
+[node name="Piranha11" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( 198, 653 )
+
+[node name="Piranha12" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -408, 242 )
+max_travelling = 1
+
+[node name="Piranha13" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -539, 283 )
+max_travelling = 1
+
+[node name="Piranha17" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -472, 519 )
+max_travelling = 1
+
+[node name="Piranha18" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -406, 597 )
+max_travelling = 1
+
+[node name="Piranha19" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -470, 692 )
+max_travelling = 1
+
+[node name="Piranha20" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -357, 654 )
+max_travelling = 1
+
+[node name="Piranha14" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -437, 360 )
+max_travelling = 1
+
+[node name="Piranha15" parent="Level/Piranhas" instance=ExtResource( 15 )]
+position = Vector2( -437, 360 )
+max_travelling = 1
 
 [node name="SpawnAreas" type="Node2D" parent="Level"]
-z_index = 20
-
-[node name="Grey" parent="Level/SpawnAreas" instance=ExtResource( 12 )]
 editor/display_folded = true
-position = Vector2( 510, 220 )
-amount = 128
+z_index = 6
 
-[node name="Area2D" parent="Level/SpawnAreas/Grey" index="0"]
+[node name="SpawnArea1" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 620, 285 )
+id = 1
+width = 420.0
+height = 128.0
+border_color = Color( 0.447059, 1, 0.313726, 1 )
+
+[node name="SpawnArea2" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 70, 285 )
+rotation = -0.00173524
+id = 2
+width = 420.0
+height = 128.0
+border_color = Color( 0.223529, 0.862745, 0.0196078, 1 )
+
+[node name="SpawnArea3" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 620, 420 )
+id = 3
+width = 420.0
+height = 128.0
+border_color = Color( 0.447059, 1, 0.313726, 1 )
+
+[node name="SpawnArea4" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 344, 285 )
+id = 4
+width = 128.0
+height = 128.0
+border_color = Color( 0.898039, 1, 0.313726, 1 )
+
+[node name="SpawnArea5" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 70, 420 )
+rotation = -0.00173524
+id = 5
+width = 420.0
+height = 128.0
+border_color = Color( 0.223529, 0.862745, 0.0196078, 1 )
+
+[node name="SpawnArea6" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( -202, 285 )
+id = 6
+width = 128.0
+height = 128.0
+border_color = Color( 1, 0.811765, 0.313726, 1 )
+
+[node name="SpawnArea7" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 620, 556 )
+id = 1
+width = 420.0
+height = 128.0
+border_color = Color( 0.447059, 1, 0.313726, 1 )
+
+[node name="SpawnArea8" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 344, 420 )
+id = 8
+width = 128.0
+height = 128.0
+border_color = Color( 0.898039, 1, 0.313726, 1 )
+
+[node name="SpawnArea9" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 70, 556 )
+rotation = -0.00173524
+id = 9
+width = 420.0
+height = 128.0
+border_color = Color( 0.223529, 0.862745, 0.0196078, 1 )
+
+[node name="SpawnArea10" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( -202, 420 )
+id = 10
+width = 128.0
+height = 128.0
+border_color = Color( 1, 0.811765, 0.313726, 1 )
+
+[node name="SpawnArea11" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 620, 691 )
+id = 11
+width = 420.0
+height = 128.0
+border_color = Color( 0.447059, 1, 0.313726, 1 )
+
+[node name="SpawnArea12" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 344, 556 )
+id = 12
+width = 128.0
+height = 128.0
+border_color = Color( 0.898039, 1, 0.313726, 1 )
+
+[node name="SpawnArea13" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 70, 691 )
+rotation = -0.00173524
+id = 13
+width = 420.0
+height = 128.0
+border_color = Color( 0.223529, 0.862745, 0.0196078, 1 )
+
+[node name="SpawnArea14" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( -202, 556 )
+id = 14
+width = 128.0
+height = 128.0
+border_color = Color( 1, 0.811765, 0.313726, 1 )
+
+[node name="SpawnArea15" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 344, 691 )
+id = 15
+width = 128.0
+height = 128.0
+border_color = Color( 0.898039, 1, 0.313726, 1 )
+
+[node name="SpawnArea16" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( -202, 691 )
+id = 16
+width = 128.0
+height = 128.0
+border_color = Color( 1, 0.811765, 0.313726, 1 )
+
+[node name="SpawnArea17" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( -455, 472 )
+id = 17
+width = 256.0
+height = 512.0
+border_color = Color( 0.788235, 0.737255, 0.596078, 1 )
+
+[node name="SpawnArea18" parent="Level/SpawnAreas" instance=ExtResource( 16 )]
+position = Vector2( 987, 473 )
+id = 17
+width = 256.0
+height = 512.0
+border_color = Color( 0.788235, 0.737255, 0.596078, 1 )
+
+[node name="AirplaneSpawnPosition" type="Position2D" parent="Level"]
+position = Vector2( 1319, 82 )
+
+[node name="Birds" type="Node2D" parent="Level"]
 editor/display_folded = true
-position = Vector2( 0, 80 )
 
-[node name="CollisionShape2D" parent="Level/SpawnAreas/Grey/Area2D" index="0"]
-shape = SubResource( 4 )
+[node name="Bird" parent="Level/Birds" instance=ExtResource( 17 )]
+position = Vector2( 764, 110 )
 
-[node name="Green" parent="Level/SpawnAreas" instance=ExtResource( 12 )]
-position = Vector2( 510, 290 )
-species = 1
-amount = 24
+[node name="Bird2" parent="Level/Birds" instance=ExtResource( 17 )]
+position = Vector2( 827, 127 )
 
-[node name="Blue" parent="Level/SpawnAreas" instance=ExtResource( 12 )]
-position = Vector2( 510, 370 )
-species = 2
-amount = 24
+[node name="Bird3" parent="Level/Birds" instance=ExtResource( 17 )]
+position = Vector2( 888, 94 )
 
-[node name="Purple" parent="Level/SpawnAreas" instance=ExtResource( 12 )]
-position = Vector2( 510, 460 )
-species = 3
-amount = 20
+[node name="Bird4" parent="Level/Birds" instance=ExtResource( 17 )]
+position = Vector2( 715, 60 )
 
-[node name="Turquoise" parent="Level/SpawnAreas" instance=ExtResource( 12 )]
-position = Vector2( 510, 550 )
-
-[node name="Golden" parent="Level/SpawnAreas" instance=ExtResource( 12 )]
-position = Vector2( 510, 650 )
+[node name="RecordSpawner" parent="Level" instance=ExtResource( 18 )]
+position = Vector2( 346, 298 )
 
 [node name="HUDLayer" type="CanvasLayer" parent="."]
 scale = Vector2( 2, 2 )
 transform = Transform2D( 2, 0, 0, 2, 0, 0 )
-script = ExtResource( 13 )
+script = ExtResource( 19 )
 
 [node name="HUD" type="Control" parent="HUDLayer"]
 margin_right = 640.0
-margin_bottom = 360.0
+margin_bottom = 24.0
 mouse_filter = 1
-theme = ExtResource( 14 )
-__meta__ = {
-"_edit_lock_": true
-}
+theme = ExtResource( 20 )
 
 [node name="MoneyPanel" type="PanelContainer" parent="HUDLayer/HUD"]
+anchor_right = 1.0
+margin_bottom = 24.0
+custom_styles/panel = ExtResource( 21 )
+
+[node name="VBoxContainer" type="HBoxContainer" parent="HUDLayer/HUD/MoneyPanel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 637.0
+margin_bottom = 21.0
+
+[node name="ScoreLabel" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer" instance=ExtResource( 22 )]
+margin_top = 0.0
+margin_right = 28.0
+margin_bottom = 18.0
+size_flags_vertical = 7
+custom_styles/normal = SubResource( 4 )
+
+[node name="VSeparator" type="VSeparator" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer"]
+margin_left = 32.0
+margin_right = 323.0
+margin_bottom = 18.0
+size_flags_horizontal = 3
+custom_styles/separator = SubResource( 5 )
+
+[node name="MoneyButton" type="Button" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer"]
+margin_left = 327.0
+margin_right = 375.0
+margin_bottom = 18.0
+text = "Money pls"
+
+[node name="FreeCamButton" type="Button" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer"]
+margin_left = 379.0
+margin_right = 427.0
+margin_bottom = 18.0
+toggle_mode = true
+text = "Look Free"
+
+[node name="Leaderboard" type="Button" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer"]
+margin_left = 431.0
+margin_right = 491.0
+margin_bottom = 18.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Leaderboard"
+
+[node name="JukeboxButton" type="Button" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer"]
+margin_left = 495.0
+margin_right = 538.0
+margin_bottom = 18.0
+text = "Jukebox"
+
+[node name="Upgrades" type="Button" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer"]
+margin_left = 542.0
+margin_right = 588.0
+margin_bottom = 18.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Upgrades"
+
+[node name="Settings" type="Button" parent="HUDLayer/HUD/MoneyPanel/VBoxContainer"]
+margin_left = 592.0
+margin_right = 634.0
+margin_bottom = 18.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Settings"
+
+[node name="LogPanel" type="PanelContainer" parent="HUDLayer/HUD"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -178.0
+margin_top = 251.0
+margin_right = -3.0
+margin_bottom = 335.0
+custom_styles/panel = ExtResource( 21 )
+script = ExtResource( 23 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HUDLayer/HUD/LogPanel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 172.0
+margin_bottom = 80.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUDLayer/HUD/LogPanel/ScrollContainer"]
+margin_right = 169.0
+margin_bottom = 77.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+bbcode_text = "Alpha 0.2.1 - Enjoy your time :)"
+text = "Alpha 0.2.1 - Enjoy your time :)"
+scroll_following = true
+
+[node name="JukeboxPanel" parent="HUDLayer/HUD" instance=ExtResource( 24 )]
+anchor_right = 0.0
 margin_left = 5.0
-margin_top = 5.0
-margin_right = 29.0
-margin_bottom = 25.0
+margin_top = 364.0
+margin_right = 133.0
+margin_bottom = 614.0
 
-[node name="Label" type="Label" parent="HUDLayer/HUD/MoneyPanel"]
-margin_left = 5.0
-margin_top = 5.0
-margin_right = 33.0
-margin_bottom = 34.0
-text = "Money:
-0$"
+[node name="UpgradeMenu" parent="HUDLayer/HUD" instance=ExtResource( 25 )]
+margin_left = 62.0
+margin_top = 41.0
+margin_right = 507.0
+margin_bottom = 334.0
 
-[node name="HighscoreLayer" parent="." instance=ExtResource( 15 )]
+[node name="SettingsMenu" parent="HUDLayer" instance=ExtResource( 26 )]
+margin_left = 155.0
+margin_top = 72.5
+margin_right = 361.0
+margin_bottom = 208.5
 
-[node name="Sound" type="Node" parent="."]
+[node name="FPSLabel" type="Label" parent="HUDLayer"]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 4.5
+margin_top = -701.0
+margin_right = 44.5
+margin_bottom = -687.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "100"
 
-[node name="JukeBox" parent="Sound" instance=ExtResource( 16 )]
+[node name="Sounds" type="Node" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sound"]
-stream = ExtResource( 17 )
+[node name="SeaAmbience" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 27 )
 volume_db = -16.0
 autoplay = true
+bus = "ambience"
 
-[node name="TouchControls" type="CanvasLayer" parent="."]
+[node name="Click" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 28 )
+bus = "sound"
 
-[node name="Left" type="TouchScreenButton" parent="TouchControls"]
-visible = false
-modulate = Color( 1, 1, 1, 0.643137 )
-position = Vector2( 1150, 540 )
-scale = Vector2( 6, 6 )
-normal = ExtResource( 18 )
-pressed = ExtResource( 19 )
+[node name="FreeFloatCam" type="Camera2D" parent="." groups=[
+"free_cam",
+]]
+script = ExtResource( 29 )
 
-[node name="Right" type="TouchScreenButton" parent="TouchControls"]
-visible = false
-modulate = Color( 1, 1, 1, 0.643137 )
-position = Vector2( 24, 540 )
-scale = Vector2( 6, 6 )
-normal = ExtResource( 18 )
-pressed = ExtResource( 19 )
+[node name="Debug" type="Node" parent="."]
 
 [connection signal="body_entered" from="Level/WaterArea" to="Level/WaterArea" method="_on_WaterArea_body_entered"]
 [connection signal="area_entered" from="Level/Borders/Top" to="Level/Borders" method="_on_Top_area_entered"]
 [connection signal="area_entered" from="Level/Borders/Left" to="Level/Borders" method="_on_Left_area_entered"]
+[connection signal="area_entered" from="Level/Borders/Left3" to="Level/Borders" method="_on_Left_area_entered"]
+[connection signal="area_entered" from="Level/Borders/Left2" to="Level/Borders" method="_on_Left_area_entered"]
 [connection signal="area_entered" from="Level/Borders/Right" to="Level/Borders" method="_on_Right_area_entered"]
+[connection signal="area_entered" from="Level/Borders/Right3" to="Level/Borders" method="_on_Right_area_entered"]
+[connection signal="area_entered" from="Level/Borders/Right2" to="Level/Borders" method="_on_Right_area_entered"]
 [connection signal="area_entered" from="Level/Borders/Bottom" to="Level/Borders" method="_on_Bottom_area_entered"]
 [connection signal="fish_collected" from="Level/Stand" to="." method="_on_Stand_fish_collected"]
-[connection signal="pressed" from="TouchControls/Left" to="Level/Player" method="_on_Left_pressed"]
-[connection signal="released" from="TouchControls/Left" to="Level/Player" method="_on_Left_released"]
-[connection signal="pressed" from="TouchControls/Right" to="Level/Player" method="_on_Right_pressed"]
-[connection signal="released" from="TouchControls/Right" to="Level/Player" method="_on_Right_released"]
-
-[editable path="Level/SpawnAreas/Grey"]
+[connection signal="combo_lost" from="Level/Stand/ComboBar" to="." method="_on_ComboBar_combo_lost"]
+[connection signal="combo_won" from="Level/Stand/ComboBar" to="." method="_on_ComboBar_combo_won"]
+[connection signal="sale_started" from="Level/Stand/ComboBar" to="." method="_on_ComboBar_sale_started"]
+[connection signal="pressed" from="HUDLayer/HUD/MoneyPanel/VBoxContainer/MoneyButton" to="." method="_on_MoneyButton_pressed"]
+[connection signal="toggled" from="HUDLayer/HUD/MoneyPanel/VBoxContainer/FreeCamButton" to="." method="_on_FreeCamButton_toggled"]
+[connection signal="pressed" from="HUDLayer/HUD/MoneyPanel/VBoxContainer/Leaderboard" to="." method="_on_Leaderboard_pressed"]
+[connection signal="pressed" from="HUDLayer/HUD/MoneyPanel/VBoxContainer/JukeboxButton" to="." method="_on_JukeboxButton_pressed"]
+[connection signal="pressed" from="HUDLayer/HUD/MoneyPanel/VBoxContainer/Upgrades" to="." method="_on_Upgrades_pressed"]
+[connection signal="pressed" from="HUDLayer/HUD/MoneyPanel/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="mouse_entered" from="HUDLayer/HUD/LogPanel" to="HUDLayer/HUD/LogPanel" method="_on_LogPanel_mouse_entered"]
+[connection signal="mouse_exited" from="HUDLayer/HUD/LogPanel" to="HUDLayer/HUD/LogPanel" method="_on_LogPanel_mouse_exited"]
+[connection signal="upgrade_bought" from="HUDLayer/HUD/UpgradeMenu" to="." method="_on_UpgradeMenu_upgrade_bought"]

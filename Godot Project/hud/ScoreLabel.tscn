@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://hud/StyleboxWoodCarve.tres" type="StyleBox" id=1]
+
+[node name="ScoreLabel" type="Label"]
+margin_top = 17.0
+margin_right = 148.0
+margin_bottom = 35.0
+custom_styles/normal = ExtResource( 1 )
+text = "5.000$"
+align = 1
+

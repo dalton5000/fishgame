@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Jason Shaw - 12 Mornings.ogg-0bc01747a51eb5f69585193fb1928b80.oggstr"
+
+[deps]
+
+source_file="res://music/Jason Shaw - 12 Mornings.ogg"
+dest_files=[ "res://.import/Jason Shaw - 12 Mornings.ogg-0bc01747a51eb5f69585193fb1928b80.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

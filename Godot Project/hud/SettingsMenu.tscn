@@ -1,0 +1,242 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://hud/theme.tres" type="Theme" id=1]
+[ext_resource path="res://hud/flat_panel_bright.tres" type="StyleBox" id=2]
+[ext_resource path="res://hud/SettingsMenu.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color( 0.45098, 0.796078, 0.984314, 0.717647 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[node name="SettingsMenu" type="PopupPanel"]
+pause_mode = 2
+margin_right = 360.0
+margin_bottom = 200.0
+rect_min_size = Vector2( 360, 240 )
+theme = ExtResource( 1 )
+custom_styles/panel = ExtResource( 2 )
+script = ExtResource( 3 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -4.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+margin_right = 354.0
+margin_bottom = 233.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_right = 354.0
+margin_bottom = 29.0
+text = "Game Paused
+"
+align = 1
+valign = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 33.0
+margin_right = 354.0
+margin_bottom = 46.0
+text = "Settings"
+align = 1
+valign = 1
+
+[node name="VolumePanel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 354.0
+margin_bottom = 67.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VolumePanel"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 346.0
+margin_bottom = 15.0
+alignment = 1
+
+[node name="Volume" type="Label" parent="MarginContainer/VBoxContainer/VolumePanel/HBoxContainer"]
+margin_left = 83.0
+margin_right = 203.0
+margin_bottom = 13.0
+rect_min_size = Vector2( 120, 0 )
+text = "Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VolumePanel/HBoxContainer"]
+margin_left = 207.0
+margin_right = 255.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 48, 0 )
+max_value = 10.0
+value = 10.0
+
+[node name="MusicPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 71.0
+margin_right = 354.0
+margin_bottom = 93.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MusicPanel"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 346.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MusicPanel/HBoxContainer"]
+margin_left = 94.0
+margin_top = 2.0
+margin_right = 214.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 120, 0 )
+text = " Music"
+
+[node name="MusicToggle" type="Button" parent="MarginContainer/VBoxContainer/MusicPanel/HBoxContainer"]
+margin_left = 218.0
+margin_right = 244.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 26, 0 )
+toggle_mode = true
+pressed = true
+text = "ON"
+
+[node name="SFXPanel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 97.0
+margin_right = 354.0
+margin_bottom = 119.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/SFXPanel"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 346.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2"]
+margin_left = 94.0
+margin_top = 2.0
+margin_right = 214.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 120, 0 )
+text = " Soundeffects"
+
+[node name="SoundToggle" type="Button" parent="MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2"]
+margin_left = 218.0
+margin_right = 244.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 26, 0 )
+toggle_mode = true
+pressed = true
+text = "ON"
+
+[node name="AmbiencePanel" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 123.0
+margin_right = 354.0
+margin_bottom = 145.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/AmbiencePanel"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 346.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2"]
+margin_left = 94.0
+margin_top = 2.0
+margin_right = 214.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 120, 0 )
+text = " Ambience"
+clip_text = true
+
+[node name="AmbienceToggle" type="Button" parent="MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2"]
+margin_left = 218.0
+margin_right = 244.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 26, 0 )
+toggle_mode = true
+pressed = true
+text = "ON"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 149.0
+margin_right = 354.0
+margin_bottom = 153.0
+custom_styles/separator = SubResource( 2 )
+
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 157.0
+margin_right = 354.0
+margin_bottom = 161.0
+custom_styles/separator = SubResource( 2 )
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 165.0
+margin_right = 354.0
+margin_bottom = 178.0
+text = "Savegame"
+align = 1
+valign = 1
+
+[node name="PanelContainer4" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 182.0
+margin_right = 354.0
+margin_bottom = 204.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer4"]
+margin_left = 8.0
+margin_top = 2.0
+margin_right = 346.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer2"]
+margin_left = 131.0
+margin_right = 206.0
+margin_bottom = 18.0
+disabled = true
+text = "Start new Game"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 208.0
+margin_right = 354.0
+margin_bottom = 212.0
+custom_styles/separator = SubResource( 3 )
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+margin_top = 216.0
+margin_right = 354.0
+margin_bottom = 220.0
+custom_styles/separator = SubResource( 3 )
+
+[node name="Close" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 224.0
+margin_right = 354.0
+margin_bottom = 242.0
+text = "Close"
+
+[connection signal="about_to_show" from="." to="." method="_on_SettingsMenu_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_SettingsMenu_popup_hide"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/VolumePanel/HBoxContainer/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/MusicPanel/HBoxContainer/MusicToggle" to="." method="_on_MusicToggle_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle" to="." method="_on_SoundToggle_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle" to="." method="_on_AmbienceToggle_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Close" to="." method="_on_Close_pressed"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mouseclick1.wav-75c62635ef9e6f681cdb202cd4df89f2.sample"
+
+[deps]
+
+source_file="res://sfx/UI Set Kenney/mouseclick1.wav"
+dest_files=[ "res://.import/mouseclick1.wav-75c62635ef9e6f681cdb202cd4df89f2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

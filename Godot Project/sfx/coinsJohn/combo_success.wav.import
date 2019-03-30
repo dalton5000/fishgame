@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/combo_success.wav-ed3908101bd4189a63367682d4a93a23.sample"
+
+[deps]
+
+source_file="res://sfx/coinsJohn/combo_success.wav"
+dest_files=[ "res://.import/combo_success.wav-ed3908101bd4189a63367682d4a93a23.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

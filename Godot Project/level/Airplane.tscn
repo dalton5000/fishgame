@@ -1,0 +1,128 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Airplane.gd" type="Script" id=1]
+[ext_resource path="res://graphics/airplane.png/airplane1.png" type="Texture" id=2]
+[ext_resource path="res://graphics/airplane.png/airplane2.png" type="Texture" id=3]
+[ext_resource path="res://graphics/airplane.png/airplane3.png" type="Texture" id=4]
+[ext_resource path="res://graphics/airplane.png/airplane4.png" type="Texture" id=5]
+[ext_resource path="res://sfx/airplane.wav" type="AudioStream" id=6]
+[ext_resource path="res://hud/connection_ii/ConnectionII.tres" type="DynamicFont" id=7]
+[ext_resource path="res://hud/theme.tres" type="Theme" id=8]
+[ext_resource path="res://hud/SempliceRegular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://hud/fishsymbols.png" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "fly",
+"speed": 12.0
+} ]
+
+[sub_resource type="StyleBoxFlat" id=2]
+content_margin_left = 4.0
+content_margin_top = 2.0
+content_margin_bottom = 3.0
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.654902, 0.631373, 0.552941, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+content_margin_left = 2.0
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 9 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 10, 10 )
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[node name="Airplane" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "fly"
+frame = 2
+playing = true
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -45.5, 0 )
+scale = Vector2( 5.55, 1 )
+
+[node name="Wroom" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+volume_db = -11.594
+attenuation = 0.812252
+bus = "sound"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 13.0
+margin_top = -6.0
+margin_right = 184.0
+margin_bottom = 11.0
+custom_styles/panel = SubResource( 2 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 180.0
+margin_bottom = 14.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/HBoxContainer"]
+margin_right = 130.0
+margin_bottom = 12.0
+rect_min_size = Vector2( 130, 12 )
+custom_styles/normal = SubResource( 3 )
+custom_fonts/normal_font = ExtResource( 7 )
+bbcode_enabled = true
+bbcode_text = "There's Bonus for this Combo:"
+text = "There's Bonus for this Combo:"
+scroll_active = false
+
+[node name="Label" type="Label" parent="PanelContainer/HBoxContainer"]
+visible = false
+margin_left = 4.0
+margin_right = 78.0
+margin_bottom = 13.0
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 4 )
+text = "3 Greens for 100$"
+
+[node name="FishIcon" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+margin_left = 134.0
+margin_right = 144.0
+margin_bottom = 12.0
+texture = SubResource( 5 )
+stretch_mode = 4
+
+[node name="FishIcon2" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+margin_left = 148.0
+margin_right = 158.0
+margin_bottom = 12.0
+texture = SubResource( 5 )
+stretch_mode = 4
+
+[node name="FishIcon3" type="TextureRect" parent="PanelContainer/HBoxContainer"]
+margin_left = 162.0
+margin_right = 172.0
+margin_bottom = 12.0
+texture = SubResource( 5 )
+stretch_mode = 4
+
+[node name="VSeparator" type="VSeparator" parent="PanelContainer/HBoxContainer"]
+margin_left = 176.0
+margin_right = 176.0
+margin_bottom = 12.0
+custom_styles/separator = SubResource( 6 )
+custom_constants/separation = 0
+
+[connection signal="viewport_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_viewport_entered"]

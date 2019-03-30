@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/switch29.wav-351e41c8067517077da81c69bfd0ec18.sample"
+
+[deps]
+
+source_file="res://sfx/UI Set Kenney/switch29.wav"
+dest_files=[ "res://.import/switch29.wav-351e41c8067517077da81c69bfd0ec18.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

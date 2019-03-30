@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/boat.png" type="Texture" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://sfx/motor.ogg" type="AudioStream" id=10]
 [ext_resource path="res://sfx/reel.wav" type="AudioStream" id=11]
 [ext_resource path="res://sfx/woosh.wav" type="AudioStream" id=12]
-[ext_resource path="res://player/Camera2D.gd" type="Script" id=13]
+[ext_resource path="res://sfx/boje_hit.wav" type="AudioStream" id=13]
+[ext_resource path="res://player/Camera2D.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "wind_up"
@@ -29,7 +30,7 @@ tracks/0/keys = {
 "values": [ 0.0, 135.0 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "wave"
 loop = true
 tracks/0/type = "value"
@@ -46,6 +47,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 2, 2 )
 
 [node name="Player" type="Node2D"]
@@ -69,83 +73,84 @@ position = Vector2( 7, 0 )
 script = ExtResource( 4 )
 
 [node name="Position2D" type="Position2D" parent="Boat/FishLoad"]
-editor/display_folded = true
 position = Vector2( 0, 4 )
 
 [node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
+frame = 3
 
 [node name="Position2D2" type="Position2D" parent="Boat/FishLoad"]
-editor/display_folded = true
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D2"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D2"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
+frame = 3
 
 [node name="Position2D3" type="Position2D" parent="Boat/FishLoad"]
 position = Vector2( 0, -5 )
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D3"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D3"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
-frame = 10
+frame = 3
 
 [node name="Position2D4" type="Position2D" parent="Boat/FishLoad"]
-editor/display_folded = true
 position = Vector2( 0, -9 )
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D4"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D4"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
+frame = 3
 
 [node name="Position2D5" type="Position2D" parent="Boat/FishLoad"]
 position = Vector2( 0, -13 )
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D5"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D5"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
-frame = 5
+frame = 3
 
 [node name="Position2D6" type="Position2D" parent="Boat/FishLoad"]
-editor/display_folded = true
 position = Vector2( 0, -18 )
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D6"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D6"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
+frame = 3
 
 [node name="Position2D7" type="Position2D" parent="Boat/FishLoad"]
 position = Vector2( 0, -22 )
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D7"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D7"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
-frame = 10
+frame = 3
 
 [node name="Position2D8" type="Position2D" parent="Boat/FishLoad"]
 position = Vector2( 0, -26 )
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D8"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D8"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
+frame = 3
 
 [node name="Position2D9" type="Position2D" parent="Boat/FishLoad"]
 position = Vector2( 0, -31 )
 
-[node name="Sprite2" type="Sprite" parent="Boat/FishLoad/Position2D9"]
+[node name="Sprite" type="Sprite" parent="Boat/FishLoad/Position2D9"]
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
-frame = 15
+frame = 3
 
 [node name="Position2D10" type="Position2D" parent="Boat/FishLoad"]
 position = Vector2( 0, -35 )
@@ -154,6 +159,7 @@ position = Vector2( 0, -35 )
 texture = ExtResource( 5 )
 vframes = 10
 hframes = 5
+frame = 3
 
 [node name="Angler" type="Node2D" parent="Boat"]
 editor/display_folded = true
@@ -179,25 +185,46 @@ position = Vector2( -22, -1 )
 texture = ExtResource( 7 )
 
 [node name="FlagAnimation" type="AnimationPlayer" parent="Boat"]
-anims/wave = SubResource( 4 )
+anims/wave = SubResource( 2 )
 
 [node name="SpriteFloater" parent="Boat" instance=ExtResource( 8 )]
 
 [node name="MotorParticles" parent="Boat" instance=ExtResource( 9 )]
 position = Vector2( 29, 13 )
 
+[node name="Colliders" type="Node2D" parent="Boat"]
+
+[node name="LeftCollider" type="Area2D" parent="Boat/Colliders"]
+position = Vector2( -7, 9 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat/Colliders/LeftCollider"]
+shape = SubResource( 3 )
+
+[node name="RightCollider" type="Area2D" parent="Boat/Colliders"]
+position = Vector2( 26, 9 )
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat/Colliders/RightCollider"]
+shape = SubResource( 3 )
+
 [node name="CollectionArea" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 0, -9 )
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollectionArea"]
 position = Vector2( -24, 3 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Motor" type="AudioStreamPlayer2D" parent="Sounds"]
+position = Vector2( 33, -1 )
 stream = ExtResource( 10 )
+volume_db = -37.017
 autoplay = true
 
 [node name="Pull" type="AudioStreamPlayer2D" parent="Sounds"]
@@ -217,12 +244,22 @@ stream = ExtResource( 12 )
 attenuation = 0.353553
 bus = "sound"
 
-[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="Sounds"]
+[node name="Collision" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource( 13 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." groups=[
+"player_cam",
+]]
 current = true
 zoom = Vector2( 0.5, 0.5 )
-script = ExtResource( 13 )
+drag_margin_left = 0.1
+drag_margin_right = 0.1
+script = ExtResource( 14 )
 
 [connection signal="animation_finished" from="Boat/Angler/Rod/RodAnimation" to="." method="_on_RodAnimation_animation_finished"]
+[connection signal="area_entered" from="Boat/Colliders/LeftCollider" to="." method="_on_LeftCollider_area_entered"]
+[connection signal="area_exited" from="Boat/Colliders/LeftCollider" to="." method="_on_LeftCollider_area_exited"]
+[connection signal="area_entered" from="Boat/Colliders/RightCollider" to="." method="_on_RightCollider_area_entered"]
+[connection signal="area_exited" from="Boat/Colliders/RightCollider" to="." method="_on_RightCollider_area_exited"]
+[connection signal="area_entered" from="CollectionArea" to="." method="_on_CollectionArea_area_entered"]
 [connection signal="body_entered" from="CollectionArea" to="." method="_on_CollectionArea_body_entered"]

@@ -23,7 +23,9 @@ func _ready():
 
 func _on_BiteArea_body_entered(body):
 	if body.is_in_group("lure"):
-		get_hooked(body)
+#		helper.log_message("fish on hook: %s, maximum: %s" % [body.hooked_fish.size(), upgrade_data.get_current_value("hook")])
+		if body.hooked_fish.size() < upgrade_data.get_current_value("hook"):
+			get_hooked(body)
 
 
 var dir = 1
@@ -40,8 +42,8 @@ func _physics_process(delta):
 			velocity = lerp(velocity,Vector2.ZERO,0.01)
 			position += velocity * delta
 		FISH_STATES.HOOKED:
-			look_at(hook.global_position)
-			global_position = hook.global_position+Vector2(0,1)
+			look_at(hook.global_position+Vector2(0,6))
+			global_position = hook.global_position+Vector2(0,6)
 
 	
 
@@ -66,9 +68,11 @@ func get_hooked(lure):
 	lure.connect("disconnected",self,"on_lure_disconnected")
 	lure.connect("collected",self,"on_lure_collected")
 	$Sounds/Bite.play()
-
+	lure.hook_fish(type_id)
+	
 func on_lure_collected():
 	get_collected()
+#	pass
 	
 func get_collected():
 #	queue_free()
@@ -76,9 +80,12 @@ func get_collected():
 
 func get_eaten():
 #	$Sprite.frame=6
+	$Body/Sprite.frame = 4
 	emit_signal("eaten",self)
 	$Tween.interpolate_property(self,"modulate",Color.white,Color(1, 1, 1, 0),0.6,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	$Tween.start()
+	if state == FISH_STATES.HOOKED:
+		hook.unhook_fish(type_id)
 	yield($Tween,"tween_completed")
 	queue_free()
 

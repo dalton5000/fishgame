@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mouserelease1.wav-2e9b5c70611a59f89f9f00be1b725e3f.sample"
+
+[deps]
+
+source_file="res://sfx/UI Set Kenney/mouserelease1.wav"
+dest_files=[ "res://.import/mouserelease1.wav-2e9b5c70611a59f89f9f00be1b725e3f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

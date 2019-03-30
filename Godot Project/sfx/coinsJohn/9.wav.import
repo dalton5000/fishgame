@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/9.wav-51c9abe8678237f57e1687d5100916bc.sample"
+
+[deps]
+
+source_file="res://sfx/coinsJohn/9.wav"
+dest_files=[ "res://.import/9.wav-51c9abe8678237f57e1687d5100916bc.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

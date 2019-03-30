@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Unwritten Stories  - I'm Alright.ogg-edc849cc39a7ff7589f8534acab18fbb.oggstr"
+
+[deps]
+
+source_file="res://music/Unwritten Stories  - I'm Alright.ogg"
+dest_files=[ "res://.import/Unwritten Stories  - I'm Alright.ogg-edc849cc39a7ff7589f8534acab18fbb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

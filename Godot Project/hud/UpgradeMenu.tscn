@@ -1,0 +1,178 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://hud/wood_theme.tres" type="Theme" id=1]
+[ext_resource path="res://hud/UpgradeMenu.gd" type="Script" id=2]
+[ext_resource path="res://hud/woodpanel2.png" type="Texture" id=3]
+[ext_resource path="res://hud/woodpanel_dark.png" type="Texture" id=4]
+[ext_resource path="res://hud/StyleboxWoodBorder.tres" type="StyleBox" id=5]
+[ext_resource path="res://hud/font_big.tres" type="DynamicFont" id=6]
+[ext_resource path="res://sfx/184438__capslok__cash-register-fake.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/UI Set Kenney/click3.wav" type="AudioStream" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+content_margin_left = 8.0
+content_margin_right = 6.0
+content_margin_top = 8.0
+content_margin_bottom = 4.0
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 0, 16, 10 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 6.0
+margin_bottom = 2.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+content_margin_left = 7.0
+content_margin_right = 6.0
+content_margin_top = 8.0
+content_margin_bottom = 4.0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 16, 10 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 6.25
+margin_bottom = 1.25
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id=4]
+content_margin_left = 8.0
+bg_color = Color( 1, 0.913725, 0.745098, 1 )
+
+[node name="UpgradeMenu" type="PopupPanel" groups=[
+"menu",
+]]
+margin_right = 516.0
+margin_bottom = 375.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 516.0
+margin_bottom = 375.0
+
+[node name="TabContainer" type="TabContainer" parent="VBoxContainer"]
+margin_right = 516.0
+margin_bottom = 375.0
+size_flags_vertical = 3
+custom_styles/tab_fg = SubResource( 2 )
+custom_styles/tab_bg = SubResource( 3 )
+custom_styles/panel = ExtResource( 5 )
+tab_align = 0
+
+[node name="Fishing Rod" type="Tabs" parent="VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 33.0
+margin_right = -6.0
+margin_bottom = -8.0
+
+[node name="Body" type="VBoxContainer" parent="VBoxContainer/TabContainer/Fishing Rod"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 24
+
+[node name="Title Container" type="VBoxContainer" parent="VBoxContainer/TabContainer/Fishing Rod/Body"]
+margin_right = 502.0
+margin_bottom = 334.0
+size_flags_vertical = 3
+
+[node name="TitleBar" type="HBoxContainer" parent="VBoxContainer/TabContainer/Fishing Rod/Body/Title Container"]
+margin_right = 502.0
+margin_bottom = 18.0
+
+[node name="CategoryLabel" type="Label" parent="VBoxContainer/TabContainer/Fishing Rod/Body/Title Container/TitleBar"]
+margin_top = 2.0
+margin_right = 469.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 120, 0 )
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 6 )
+text = " Fishing Rod"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/TabContainer/Fishing Rod/Body/Title Container/TitleBar"]
+margin_left = 473.0
+margin_right = 502.0
+margin_bottom = 18.0
+text = "Close"
+
+[node name="UpgradeList" type="ScrollContainer" parent="VBoxContainer/TabContainer/Fishing Rod/Body/Title Container"]
+margin_top = 22.0
+margin_right = 502.0
+margin_bottom = 334.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/Fishing Rod/Body/Title Container/UpgradeList"]
+margin_right = 502.0
+size_flags_horizontal = 3
+
+[node name="The Boat" type="Tabs" parent="VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 33.0
+margin_right = -6.0
+margin_bottom = -8.0
+
+[node name="Body" type="VBoxContainer" parent="VBoxContainer/TabContainer/The Boat"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 24
+
+[node name="Title Container" type="VBoxContainer" parent="VBoxContainer/TabContainer/The Boat/Body"]
+margin_right = 502.0
+margin_bottom = 334.0
+size_flags_vertical = 3
+
+[node name="TitleBar" type="HBoxContainer" parent="VBoxContainer/TabContainer/The Boat/Body/Title Container"]
+margin_right = 502.0
+margin_bottom = 18.0
+
+[node name="CategoryLabel" type="Label" parent="VBoxContainer/TabContainer/The Boat/Body/Title Container/TitleBar"]
+margin_top = 2.0
+margin_right = 469.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 120, 0 )
+size_flags_horizontal = 3
+custom_styles/normal = SubResource( 4 )
+custom_fonts/font = ExtResource( 6 )
+text = "The Boat"
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/TabContainer/The Boat/Body/Title Container/TitleBar"]
+margin_left = 473.0
+margin_right = 502.0
+margin_bottom = 18.0
+text = "Close"
+
+[node name="UpgradeList" type="ScrollContainer" parent="VBoxContainer/TabContainer/The Boat/Body/Title Container"]
+margin_top = 22.0
+margin_right = 502.0
+margin_bottom = 334.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/TabContainer/The Boat/Body/Title Container/UpgradeList"]
+margin_right = 502.0
+size_flags_horizontal = 3
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="kaching" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 7 )
+bus = "sound"
+
+[node name="click" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 8 )
+bus = "sound"
+
+[connection signal="about_to_show" from="." to="." method="_on_UpgradeMenu_about_to_show"]
+[connection signal="tab_changed" from="VBoxContainer/TabContainer" to="." method="_on_TabContainer_tab_changed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/Fishing Rod/Body/Title Container/TitleBar/CloseButton" to="." method="_on_CloseButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabContainer/The Boat/Body/Title Container/TitleBar/CloseButton" to="." method="_on_CloseButton_pressed"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Unwritten Stories - Good Morning.ogg-b0c4cab27cb8130294500cdd3089b7cb.oggstr"
+
+[deps]
+
+source_file="res://music/Unwritten Stories - Good Morning.ogg"
+dest_files=[ "res://.import/Unwritten Stories - Good Morning.ogg-b0c4cab27cb8130294500cdd3089b7cb.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

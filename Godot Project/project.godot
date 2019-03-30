@@ -9,19 +9,115 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Array2D",
+"language": "GDScript",
+"path": "res://addons/godot-next/references/array_2d.gd"
+}, {
+"base": "Resource",
+"class": "Behavior",
+"language": "GDScript",
+"path": "res://addons/godot-next/resources/behavior.gd"
+}, {
+"base": "Node",
+"class": "Behaviors",
+"language": "GDScript",
+"path": "res://addons/godot-next/nodes/behaviors.gd"
+}, {
+"base": "Node2D",
+"class": "Boje",
+"language": "GDScript",
+"path": "res://level/Boje.gd"
+}, {
+"base": "Reference",
+"class": "CSVFile",
+"language": "GDScript",
+"path": "res://addons/godot-next/references/csv_file.gd"
+}, {
+"base": "Reference",
+"class": "ClassType",
+"language": "GDScript",
+"path": "res://addons/godot-next/references/class_type.gd"
+}, {
+"base": "TabContainer",
+"class": "Cycle",
+"language": "GDScript",
+"path": "res://addons/godot-next/gui/cycle.gd"
+}, {
+"base": "Reference",
+"class": "EditorTools",
+"language": "GDScript",
+"path": "res://addons/godot-next/global/editor_tools.gd"
+}, {
 "base": "Tween",
 "class": "FadeOutTween",
 "language": "GDScript",
 "path": "res://utility_nodes/FadeOutTween.gd"
 }, {
+"base": "Reference",
+"class": "FileSystemLink",
+"language": "GDScript",
+"path": "res://addons/godot-next/global/file_system_link.gd"
+}, {
 "base": "Area2D",
 "class": "Fish",
 "language": "GDScript",
 "path": "res://Fish/Fish.gd"
+}, {
+"base": "Reference",
+"class": "PropertyInfo",
+"language": "GDScript",
+"path": "res://addons/godot-next/references/property_info.gd"
+}, {
+"base": "ResourceCollection",
+"class": "ResourceArray",
+"language": "GDScript",
+"path": "res://addons/godot-next/resources/resource_collections/resource_array.gd"
+}, {
+"base": "Resource",
+"class": "ResourceCollection",
+"language": "GDScript",
+"path": "res://addons/godot-next/resources/resource_collections/resource_collection.gd"
+}, {
+"base": "ResourceCollection",
+"class": "ResourceSet",
+"language": "GDScript",
+"path": "res://addons/godot-next/resources/resource_collections/resource_set.gd"
+}, {
+"base": "Node2D",
+"class": "SpawnArea",
+"language": "GDScript",
+"path": "res://level/SpawnArea/SpawnArea.gd"
+}, {
+"base": "Line2D",
+"class": "Trail2D",
+"language": "GDScript",
+"path": "res://addons/godot-next/2d/trail_2d.gd"
+}, {
+"base": "VBoxContainer",
+"class": "VBoxItemList",
+"language": "GDScript",
+"path": "res://addons/godot-next/gui/v_box_item_list.gd"
 } ]
 _global_script_class_icons={
+"Array2D": "",
+"Behavior": "",
+"Behaviors": "",
+"Boje": "",
+"CSVFile": "",
+"ClassType": "",
+"Cycle": "res://addons/godot-next/icons/icon_cycle.svg",
+"EditorTools": "",
 "FadeOutTween": "",
-"Fish": ""
+"FileSystemLink": "",
+"Fish": "",
+"PropertyInfo": "",
+"ResourceArray": "",
+"ResourceCollection": "",
+"ResourceSet": "",
+"SpawnArea": "",
+"Trail2D": "res://addons/godot-next/icons/icon_trail_2d.svg",
+"VBoxItemList": "res://addons/godot-next/icons/icon_v_box_item_list.svg"
 }
 
 [application]
@@ -32,7 +128,12 @@ config/icon="res://icon.png"
 
 [autoload]
 
+helper="*res://singletons/helper.gd"
 fish_data="*res://data/fish_data.gd"
+game_data="*res://data/game_data.gd"
+music_data="*res://singletons/MusicData.gd"
+upgrade_data="*res://singletons/upgrade_data.gd"
+area_data="*res://data/area_data.gd"
 
 [debug]
 
@@ -45,6 +146,10 @@ window/size/height=720
 window/size/resizable=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "godot-next" )
 
 [importer_defaults]
 
@@ -71,6 +176,11 @@ texture={
 
 [input]
 
+ui_cancel={
+"deadzone": 0.5,
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
 ui_left={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"unicode":0,"echo":false,"script":null)
@@ -135,6 +245,8 @@ move_right={
 2d_physics/layer_3="pickup"
 2d_physics/layer_4="level"
 2d_physics/layer_5="projectile"
+2d_physics/layer_7="boje"
+2d_physics/layer_10="decofish"
 
 [rendering]
 

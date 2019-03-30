@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/boje_hit.wav-829dc7025951a16cf60bc42d42357c9a.sample"
+
+[deps]
+
+source_file="res://sfx/boje_hit.wav"
+dest_files=[ "res://.import/boje_hit.wav-829dc7025951a16cf60bc42d42357c9a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
