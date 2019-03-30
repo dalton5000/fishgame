@@ -22,7 +22,7 @@ signal file_saved(p_filepath)
 
 ##### CONSTANTS #####
 
-const DEFAULT_SEP = "\t"
+const DEFAULT_SEP = ","
 const DEFAULT_QUOTE = "\""
 
 ##### PROPERTIES #####

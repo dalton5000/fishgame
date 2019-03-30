@@ -1,14 +1,20 @@
+# PropertyInfo
 # author: xdgamestudios
 # license: MIT
-# description: A wrapper and utility class for generating PropertyInfo Dictionaries, of which Object._get_property_list()
+# description: A wrapper and utility class for generating PropertyInfo
+#              Dictionaries, of which Object._get_property_list()
 #              returns an Array.
 tool
 extends Reference
 class_name PropertyInfo
 
+##### CLASSES #####
+
+##### SIGNALS #####
+
 ##### CONSTANTS #####
 
-const SELF_PATH := "res://addons/godot-next/references/property_info.gd"
+const SELF_PATH: String = "res://addons/godot-next/references/property_info.gd"
 
 ##### PROPERTIES #####
 
@@ -47,10 +53,10 @@ static func from_dict(p_dict: Dictionary) -> PropertyInfo:
 	return load(SELF_PATH).new(name, type, hint, hint_string, usage)
 
 static func new_nil(p_name: String) -> PropertyInfo:
-	return load(SELF_PATH).new(p_name, 0, 0, "", PROPERTY_USAGE_EDITOR)
+	return load(SELF_PATH).new(p_name, TYPE_NIL, PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR)
 
 static func new_group(p_name: String, p_prefix: String = "") -> PropertyInfo:
-	return load(SELF_PATH).new(p_name, 0, 0, p_prefix, PROPERTY_USAGE_GROUP)
+	return load(SELF_PATH).new(p_name, TYPE_NIL, PROPERTY_HINT_NONE, p_prefix, PROPERTY_USAGE_GROUP)
 
 static func new_array(p_name: String, p_hint: int = PROPERTY_HINT_NONE, p_hint_string: String = "", p_usage: int = PROPERTY_USAGE_DEFAULT) -> PropertyInfo:
 	return load(SELF_PATH).new(p_name, TYPE_ARRAY, p_hint, p_hint_string, p_usage)
@@ -60,3 +66,9 @@ static func new_dictionary(p_name: String, p_hint: int = PROPERTY_HINT_NONE, p_h
 
 static func new_resource(p_name: String, p_hint_string: String = "", p_usage: int = PROPERTY_USAGE_DEFAULT) -> PropertyInfo:
 	return load(SELF_PATH).new(p_name, TYPE_OBJECT, PROPERTY_HINT_RESOURCE_TYPE, p_hint_string, p_usage)
+
+static func new_editor_only(p_name: String):
+	return load(SELF_PATH).new(p_name, TYPE_NIL, PROPERTY_HINT_NONE, "", PROPERTY_USAGE_EDITOR | PROPERTY_USAGE_SCRIPT_VARIABLE)
+
+static func new_storage_only(p_name: String):
+	return load(SELF_PATH).new(p_name, TYPE_NIL, PROPERTY_HINT_NONE, "", PROPERTY_USAGE_STORAGE | PROPERTY_USAGE_SCRIPT_VARIABLE)
