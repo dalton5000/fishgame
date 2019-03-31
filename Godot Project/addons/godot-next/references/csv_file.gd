@@ -33,7 +33,7 @@ var _array := Array2D.new()
 var _headers := {}
 var _map := {}
 
-var _sep := DEFAULT_SEP
+var _sep := "\t"
 var _quote := DEFAULT_QUOTE
 var _uses_map := true
 

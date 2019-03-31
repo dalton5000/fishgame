@@ -21,7 +21,6 @@ var id_label_template = "Spawn Area: %s"
 
 var groupname = ""
 
-
 onready var fish_scene = preload("res://Fish/Fish.tscn")
 
 func refill():
