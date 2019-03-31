@@ -150,10 +150,14 @@ var upgrades = {
 		},
 	}
 	
-var upgrades_bought = {}
+var upgrades_bought = {} setget set_upgrades_bought
 
+func set_upgrades_bought(slug):
+	upgrades_bought = slug
+	
 func _ready():
-	initialize_upgrades_bought()
+	if upgrades_bought.size() == 0:
+		initialize_upgrades_bought()
 
 func initialize_upgrades_bought():
 	for upgrade_data in [upgrades]:

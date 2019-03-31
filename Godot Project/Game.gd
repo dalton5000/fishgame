@@ -15,7 +15,7 @@ func _physics_process(delta):
 	$HUDLayer/FPSLabel.text = str(Engine.get_frames_per_second())
 
 func log_message(message):
-	log_list.append_bbcode("\n " + str(message))
+	$HUDLayer/HUD/LogPanel/ScrollContainer/RichTextLabel.append_bbcode("\n " + str(message))
 	
 func display_airplane_message(message):
 	var new_airplane = airplane_scene.instance()
@@ -108,6 +108,8 @@ func buy_upgrade(upgrade_name):
 	set_money(money-cost)
 	upgrade_data.upgrades_bought[upgrade_name] += 1
 	get_tree().call_group("menu","reload")
+	game_data.save_game()
+	
 func _on_Upgrades_pressed():
 	$Sounds/Click.play()
 	$HUDLayer/HUD/UpgradeMenu.popup()
@@ -126,3 +128,7 @@ func _on_MoneyButton_pressed():
 func _on_JukeboxButton_pressed():
 	$Sounds/Click.play()
 	$HUDLayer/HUD/JukeboxPanel._on_Show_pressed()
+
+func _on_SettingsMenu_reset_game():	
+	game_data.reset_game()
+	set_money(game_data.player_money)

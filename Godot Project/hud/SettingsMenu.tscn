@@ -208,11 +208,10 @@ margin_right = 346.0
 margin_bottom = 20.0
 alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer2"]
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer2"]
 margin_left = 131.0
 margin_right = 206.0
 margin_bottom = 18.0
-disabled = true
 text = "Start new Game"
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
@@ -239,4 +238,5 @@ text = "Close"
 [connection signal="toggled" from="MarginContainer/VBoxContainer/MusicPanel/HBoxContainer/MusicToggle" to="." method="_on_MusicToggle_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle" to="." method="_on_SoundToggle_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle" to="." method="_on_AmbienceToggle_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer4/HBoxContainer2/ResetButton" to="." method="_on_ResetButton_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Close" to="." method="_on_Close_pressed"]

@@ -1,5 +1,7 @@
 extends PopupPanel
 
+signal reset_game
+
 const MUSIC_BUS = 1
 const SOUND_BUS = 2
 const AMBIENCE_BUS = 4
@@ -77,3 +79,9 @@ func _on_VolumeSlider_value_changed(value):
 	game_data.master_volume = value
 	var db = linear2db(float(value) / 10.0 )
 	AudioServer.set_bus_volume_db(0,db)
+
+
+func _on_ResetButton_pressed():
+	emit_signal("reset_game")
+#	yield(get_tree(), "idle_frame")
+#	get_tree().reload_current_scene()

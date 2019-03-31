@@ -18,6 +18,6 @@ func register_game(slug):
 		
 func log_message(message):
 	if game:
-		game.log_message(message)
+		get_node("/root/Game").log_message(message)
 	else:
 		queue.append(message)

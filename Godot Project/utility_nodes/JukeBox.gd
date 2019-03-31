@@ -44,5 +44,5 @@ func play_random_song():
 		get_child(current_song_id).play()
 		if helper.game:
 			var titlemessage = "Playing: %s - %s" %[ music_data.songs[current_song_id]["song_name"], music_data.songs[current_song_id]["interpret"] ]
-			helper.game.log_message(titlemessage)
+			helper.log_message(titlemessage)
 	

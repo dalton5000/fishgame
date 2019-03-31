@@ -130,10 +130,10 @@ config/icon="res://icon.png"
 
 helper="*res://singletons/helper.gd"
 fish_data="*res://data/fish_data.gd"
-game_data="*res://data/game_data.gd"
 music_data="*res://singletons/MusicData.gd"
 upgrade_data="*res://singletons/upgrade_data.gd"
 area_data="*res://data/area_data.gd"
+game_data="*res://data/game_data.gd"
 
 [debug]
 
