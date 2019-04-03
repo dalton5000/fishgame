@@ -10,6 +10,8 @@ onready var music_button = $MarginContainer/VBoxContainer/MusicPanel/HBoxContain
 onready var sound_button = $MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle
 onready var ambience_button = $MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle
 
+var initialized = false
+
 func _ready():
 	yield(get_tree(),"idle_frame")
 	var db = linear2db(float(game_data.master_volume) / 10.0 )
@@ -28,7 +30,7 @@ func _ready():
 	$MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle.pressed = false if game_data.ambience_muted else true
 	$MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle.text = "OFF" if game_data.sound_muted else "ON"
 	$MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle.pressed = false if game_data.sound_muted else true
-	
+	initialized = true
 func _on_SettingsMenu_about_to_show():
 	get_tree().paused = true
 
@@ -47,38 +49,42 @@ func _input(event):
 
 #servers: 0 master, 1 music, 2 sound, 3 spinner, 4ambience
 func _on_MusicToggle_toggled(button_pressed):
-	AudioServer.set_bus_mute(1,!button_pressed)
-	game_data.music_muted=!button_pressed
-	if button_pressed:
-		$MarginContainer/VBoxContainer/MusicPanel/HBoxContainer/MusicToggle.text = "ON"
-	else:
-		$MarginContainer/VBoxContainer/MusicPanel/HBoxContainer/MusicToggle.text = "OFF"
+	if initialized:
+		AudioServer.set_bus_mute(1,!button_pressed)
+		game_data.music_muted=!button_pressed
+		if button_pressed:
+			$MarginContainer/VBoxContainer/MusicPanel/HBoxContainer/MusicToggle.text = "ON"
+		else:
+			$MarginContainer/VBoxContainer/MusicPanel/HBoxContainer/MusicToggle.text = "OFF"
 
 func _on_AmbienceToggle_toggled(button_pressed):
-	AudioServer.set_bus_mute(4,!button_pressed)
-	game_data.ambience_muted=!button_pressed
-	if button_pressed:
-		$MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle.text = "ON"
-	else:
-		$MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle.text = "OFF"
+	if initialized:
+		AudioServer.set_bus_mute(4,!button_pressed)
+		game_data.ambience_muted=!button_pressed
+		if button_pressed:
+			$MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle.text = "ON"
+		else:
+			$MarginContainer/VBoxContainer/AmbiencePanel/HBoxContainer2/AmbienceToggle.text = "OFF"
 
 
 
 func _on_SoundToggle_toggled(button_pressed):
-	AudioServer.set_bus_mute(2,!button_pressed)
-	game_data.sound_muted=!button_pressed
-	if button_pressed:
-		$MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle.text = "ON"
-	else:
-		$MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle.text = "OFF"
+	if initialized:
+		AudioServer.set_bus_mute(2,!button_pressed)
+		game_data.sound_muted=!button_pressed
+		if button_pressed:
+			$MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle.text = "ON"
+		else:
+			$MarginContainer/VBoxContainer/SFXPanel/HBoxContainer2/SoundToggle.text = "OFF"
 
 func _on_Close_pressed():
 	hide()
 
 func _on_VolumeSlider_value_changed(value):
-	game_data.master_volume = value
-	var db = linear2db(float(value) / 10.0 )
-	AudioServer.set_bus_volume_db(0,db)
+	if initialized:
+		game_data.master_volume = value
+		var db = linear2db(float(value) / 10.0 )
+		AudioServer.set_bus_volume_db(0,db)
 
 
 func _on_ResetButton_pressed():

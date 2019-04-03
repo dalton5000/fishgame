@@ -82,10 +82,11 @@ func save_game():
 	var err = save_file.open("user://savegame.save", File.WRITE)
 	save_file.store_line(to_json(save_dict))
 	save_file.close()
-	helper.log_message("saving game, error: %s" % err)
+#	helper.log_message("saving game, error: %s" % err)
 #	helper.log_message("saving game")
 
 func save_config():
+	helper.log_message("saving config")
 	var config = ConfigFile.new()
 	var err = config.load("user://settings.cfg")
 	

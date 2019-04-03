@@ -58,15 +58,17 @@ func reload():
 	
 	$Body/UpgradeColumn/TierIcon/Sprite.frame = current_tier
 	
-	match current_tier:
-		0,1,2:
-			var cost = float(upgrade["cost"][current_tier])
-			$Body/UpgradeColumn/UpgradeButton.text = upgrade_button_text_template % cost
-			$Body/UpgradeColumn/UpgradeButton.disabled = ( cost > game_data.player_money )
-		3:
+#	print("button has current tier: %s" % current_tier)
+	if current_tier == 3:
 			$Body/UpgradeColumn/UpgradeButton.text = upgrade_button_text_finished
 			$Body/UpgradeColumn/UpgradeButton.disabled = true
-
+	
+	else:
+			var cost = float(upgrade["cost"][current_tier])
+			$Body/UpgradeColumn/UpgradeButton.text = upgrade_button_text_template % cost
+#			print("button found cost and money: %s %s" % [cost,game_data.player_money])
+			$Body/UpgradeColumn/UpgradeButton.disabled = ( cost > game_data.player_money )
+	
 func _on_UpgradeButton_pressed():
 	match upgrade_data.upgrades_bought[upgrade_name]:
 		0:

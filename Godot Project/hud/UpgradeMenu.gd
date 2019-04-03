@@ -1,6 +1,7 @@
 extends PopupPanel
 
 signal upgrade_bought
+signal lowest_cost_calculated
 
 onready var fishing_upgrade_list = $"VBoxContainer/TabContainer/Fishing Rod/Body/Title Container/UpgradeList/VBoxContainer"
 onready var boat_upgrade_list = $"VBoxContainer/TabContainer/The Boat/Body/Title Container/UpgradeList/VBoxContainer"
@@ -14,6 +15,9 @@ func clear_entries():
 
 func load_entries():
 	clear_entries()
+	
+	var lowest_upgrade_cost = 10000
+	
 	upgrade_entries = []
 	for upgrade in upgrade_data.upgrades:
 		var new_entry = upgrade_entry_scene.instance()
@@ -26,11 +30,16 @@ func load_entries():
 				parent_node = boat_upgrade_list
 		
 		new_entry.connect("upgrade_bought",self, "on_upgrade_buy_pressed")
+		if upgrade_data.upgrades_bought[upgrade] < 3:
+			var current_cost = upgrade_data.upgrades[upgrade]["cost"][upgrade_data.upgrades_bought[upgrade]]
+			if current_cost < lowest_upgrade_cost: lowest_upgrade_cost = current_cost
 		
 		upgrade_entries.append(new_entry)
 		parent_node.add_child(new_entry)
 		
 		new_entry.upgrade_name = upgrade
+	print("lowest_cost_calculated" +  str(lowest_upgrade_cost))
+	emit_signal("lowest_cost_calculated", lowest_upgrade_cost)
 
 func on_upgrade_buy_pressed(upgrade_name):
 	$Sounds/click.play()

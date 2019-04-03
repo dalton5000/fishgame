@@ -40,10 +40,12 @@ func clear_lists():
 
 func _on_song_down_pressed(song_id):
 	music_data.active_songs.erase(song_id)
+	game_data.save_game()
 	reload()
 	
 func _on_song_up_pressed(song_id):
 	music_data.active_songs.append(song_id)
+	game_data.save_game()
 	reload()
 	
 func _ready():

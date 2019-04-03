@@ -3,6 +3,8 @@ extends Node
 var money = 0 setget set_money
 var player_name = "some fisherbird" 
 
+var next_upgrade_cost = 1000
+
 onready var log_list = $HUDLayer/HUD/LogPanel/ScrollContainer/RichTextLabel
 onready var airplane_spawn = $Level/AirplaneSpawnPosition
 
@@ -44,7 +46,10 @@ func set_money(slug):
 	money = slug
 	game_data.player_money = slug
 	$HUDLayer/HUD/MoneyPanel/VBoxContainer/ScoreLabel.text = helper.make_stringy_number(game_data.player_money)
-
+	if next_upgrade_cost > slug:
+		$HUDLayer/HUD/MoneyPanel/VBoxContainer/Upgrades.text = "Upgrades"
+	else:
+		$HUDLayer/HUD/MoneyPanel/VBoxContainer/Upgrades.text = "Upgrades (!)"
 
 func _on_Stand_fish_collected(type):
 	var data = fish_data
@@ -132,3 +137,7 @@ func _on_JukeboxButton_pressed():
 func _on_SettingsMenu_reset_game():	
 	game_data.reset_game()
 	set_money(game_data.player_money)
+
+func _on_UpgradeMenu_lowest_cost_calculated(lowest_cost):
+	next_upgrade_cost = lowest_cost
+	

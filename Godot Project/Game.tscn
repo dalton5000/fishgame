@@ -641,5 +641,6 @@ script = ExtResource( 29 )
 [connection signal="pressed" from="HUDLayer/HUD/MoneyPanel/VBoxContainer/Settings" to="." method="_on_Settings_pressed"]
 [connection signal="mouse_entered" from="HUDLayer/HUD/LogPanel" to="HUDLayer/HUD/LogPanel" method="_on_LogPanel_mouse_entered"]
 [connection signal="mouse_exited" from="HUDLayer/HUD/LogPanel" to="HUDLayer/HUD/LogPanel" method="_on_LogPanel_mouse_exited"]
+[connection signal="lowest_cost_calculated" from="HUDLayer/HUD/UpgradeMenu" to="." method="_on_UpgradeMenu_lowest_cost_calculated"]
 [connection signal="upgrade_bought" from="HUDLayer/HUD/UpgradeMenu" to="." method="_on_UpgradeMenu_upgrade_bought"]
 [connection signal="reset_game" from="HUDLayer/SettingsMenu" to="." method="_on_SettingsMenu_reset_game"]
